@@ -20,3 +20,8 @@ appId = option.split("|")[1]
 if appId != "" and appName != "":
     if st.button("Afficher les graphiques"):
         st.markdown("## Graphique des heures de jeux : " + appName)
+        # On récupère le fichier des heures de jeux du jeu sélectionné
+        fichierLocation = "data/PlayerCountHistory/" + appId + ".csv"
+        df = pd.read_csv(fichierLocation, sep=",", header="infer", encoding="Latin-1")
+        st.dataframe(df)
+        st.line_chart(df, x='Time', y=['Playercount'])
