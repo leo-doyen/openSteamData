@@ -26,5 +26,9 @@ if appId != "" and appName != "":
         # On récupère le fichier des heures de jeux du jeu sélectionné
         fichierLocation = "data/PriceHistory/" + appId + ".csv"
         df = pd.read_csv(fichierLocation, sep=",", header="infer", encoding="Latin-1")
+        
+        df.columns = ['date','initialPrice','finalPrice','discount']
+        df['date'] = pd.to_datetime(df['date'])
+
         st.dataframe(df)
-        st.line_chart(df, x='Date', y=['Finalprice','Initialprice'])
+        st.line_chart(df, x='date', y=['finalPrice','initialPrice'])
