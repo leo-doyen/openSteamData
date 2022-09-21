@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from PIL import Image
 
 st.markdown("# Evolution des heures de jeux au cours du temps")
 
@@ -20,6 +21,8 @@ appId = option.split("|")[1]
 if appId != "" and appName != "":
     if st.button("Afficher les graphiques"):
         st.markdown("## Graphique des heures de jeux : " + appName)
+        imageLocation = "https://cdn.akamai.steamstatic.com/steam/apps/" + appId + "/header.jpg"
+        st.markdown("![](" + imageLocation + ")")
         # On récupère le fichier des heures de jeux du jeu sélectionné
         fichierLocation = "data/PriceHistory/" + appId + ".csv"
         df = pd.read_csv(fichierLocation, sep=",", header="infer", encoding="Latin-1")
