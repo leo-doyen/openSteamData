@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from PIL import Image
 
 st.markdown("# Evolution des heures de jeux au cours du temps")
 
@@ -8,15 +7,13 @@ st.markdown("# Evolution des heures de jeux au cours du temps")
 df = pd.read_csv("data/applicationInformation.csv", sep=",", header="infer", encoding="Latin-1")
 # Conversion de l"id en string
 df["appid"] = df["appid"].astype(str)
-# Ajout d"une colonne avec le nom du jeu et son id
-df["title"] = df["name"] + "|" + df["appid"]
 # On affiche la liste des jeux pour filtrer
-option = st.selectbox("Quelle jeu voulez vous voir ?", df["title"])
+option = st.selectbox("Quelle jeu voulez vous voir ?", df["name"])
 # Résultat du filtre
-st.write("Jeux sélectionné : ", option.split("|")[0])
+st.write("Jeux sélectionné : ", option)
 
-appName = option.split("|")[0]
-appId = option.split("|")[1]
+appName = option
+appId = df[df["name"] == appName]["appid"].values[0]
 
 if appId != "" and appName != "":
     if st.button("Afficher les graphiques"):
