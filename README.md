@@ -12,3 +12,6 @@
   
   2)  Evolution du nombre d'heure de jeu
 
+
+MAINTENANT ON FAIS NOS BRANCHE DE DEVELOP AVEC DES NOM COORECT EX :
+  featAllTagStat et pas brancheGuillaumeInch
