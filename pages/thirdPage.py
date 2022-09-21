@@ -4,19 +4,19 @@ import pandas as pd
 st.markdown("# Evolution des heures de jeux au cours du temps")
 
 # Chargement des données
-df = pd.read_csv('data/applicationInformation.csv', sep=',', header='infer', encoding='Latin-1')
-# Conversion de l'id en string
-df['appid'] = df['appid'].astype(str)
-# Ajout d'une colonne avec le nom du jeu et son id
-df['title'] = df['name'] + '|' + df['appid']
+df = pd.read_csv("data/applicationInformation.csv", sep=",", header="infer", encoding="Latin-1")
+# Conversion de l"id en string
+df["appid"] = df["appid"].astype(str)
+# Ajout d"une colonne avec le nom du jeu et son id
+df["title"] = df["name"] + "|" + df["appid"]
 # On affiche la liste des jeux pour filtrer
-option = st.selectbox('Quelle jeu voulez vous voir ?', df['title'])
+option = st.selectbox("Quelle jeu voulez vous voir ?", df["title"])
 # Résultat du filtre
-st.write('You selected:', option.split('|')[1] , option.split('|')[0])
+st.write("Jeux sélectionné : ", option.split("|")[1] , option.split("|")[0])
 
-appName = option.split('|')[0]
-appId = option.split('|')[1]
+appName = option.split("|")[0]
+appId = option.split("|")[1]
 
 if appId != "" and appName != "":
-    if st.button('Afficher les graphiques'):
+    if st.button("Afficher les graphiques"):
         st.markdown("## Graphique des heures de jeux : " + appName)
