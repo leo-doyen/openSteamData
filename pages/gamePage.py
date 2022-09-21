@@ -48,4 +48,4 @@ if appId != "" and appName != "":
         # title='Sales of consumer goods'
         # )
 
-        st.altair_chart(line_chart)
+        # st.altair_chart(line_chart)
