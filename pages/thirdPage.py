@@ -12,7 +12,7 @@ df["title"] = df["name"] + "|" + df["appid"]
 # On affiche la liste des jeux pour filtrer
 option = st.selectbox("Quelle jeu voulez vous voir ?", df["title"])
 # Résultat du filtre
-st.write("Jeux sélectionné : ", option.split("|")[1] , option.split("|")[0])
+st.write("Jeux sélectionné : ", option.split("|")[0])
 
 appName = option.split("|")[0]
 appId = option.split("|")[1]
@@ -23,5 +23,13 @@ if appId != "" and appName != "":
         # On récupère le fichier des heures de jeux du jeu sélectionné
         fichierLocation = "data/PlayerCountHistory/" + appId + ".csv"
         df = pd.read_csv(fichierLocation, sep=",", header="infer", encoding="Latin-1")
+        # On convertit la colonne Time du type object en datetime
+        df['Time'] = pd.to_datetime(df['Time'])
+        # On convertit la colonne Time du format datetime en date
+        df["Time"] = df["Time"].dt.strftime("%Y-%m-%d")
+        # On regroupe les heures par jours pour avoir un dataframe plus petit
+        df = df.groupby("Time").sum().reset_index()
+        # On affiche le dataframe en tableau
         st.dataframe(df)
+        # On affiche le dataframe en courbe
         st.line_chart(df, x='Time', y=['Playercount'])
