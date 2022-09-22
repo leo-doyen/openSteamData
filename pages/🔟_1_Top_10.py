@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-st.markdown("# Top🔟 les jeux plus chers")
+st.markdown("# Top🔟")
 
 # Chargement des données
 dfMin = pd.read_csv('data/min_price_per_game.csv', sep=',', encoding='Latin-1')
