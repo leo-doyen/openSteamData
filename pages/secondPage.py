@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import os
 import pandas as pd
 
-st.markdown("# Second page")
+st.markdown("# Répartition du nombre d'heures de jeu cumulées sur tous les jeux steam")
 
 tags=pd.read_csv(r'data/applicationTags.csv', sep=',',header=None, encoding='Latin-1')
 hours=pd.read_csv(r'data/hours_total_per_game.csv', sep=',',header='infer', encoding='Latin-1')
@@ -45,7 +45,7 @@ final2.drop('releasedate', inplace=True, axis=1)
 final2.drop('freetoplay', inplace=True, axis=1)
 # final2=final2.sort_values(by=['idx'], ascending=True)
 final2=final2.sort_values(by='hours',ascending=False)
-final2
+
 time_autre=final2.iloc[3:].hours.sum(axis=0)
 
 hour_graph=final2.sort_values(by='hours',ascending=False).iloc[:3]
