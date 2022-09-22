@@ -7,8 +7,6 @@ st.set_page_config(
     page_icon="🥇",
 )
 
-st.sidebar("🥇 Statistique par joueur")
-
 st.markdown("# Statistique par joueur")
 
 userId = st.text_input("Entrer un id utilisateur", "")
