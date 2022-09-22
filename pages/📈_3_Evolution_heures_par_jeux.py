@@ -1,5 +1,11 @@
 import streamlit as st
 import pandas as pd
+import requests
+
+st.set_page_config(
+    page_title="Evolution des heures de jeux au cours du temps",
+    page_icon="📈",
+)
 
 st.markdown("# Evolution des heures de jeux au cours du temps")
 
@@ -22,6 +28,12 @@ nbHourPlayedPerPlayer = st.slider("Nombre d'heure joué par joueur : ", 1, 24, 1
 if appId != "" and appName != "":
     if st.button("Afficher les graphiques"):
         st.markdown("## Graphique des heures de jeux : " + appName)
+ 
+        url = "https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=" + appId
+        resp = requests.get(url=url)
+        data = resp.json()
+        nbPlayerConnected = data["response"]["player_count"]
+        st.markdown("Nombre de joueur actuelement connecté : " + str(nbPlayerConnected))
         imageLocation = "https://cdn.akamai.steamstatic.com/steam/apps/" + appId + "/header.jpg"
         st.markdown("![](" + imageLocation + ")")
         # On récupère le fichier des heures de jeux du jeu sélectionné
@@ -52,12 +64,12 @@ if appId != "" and appName != "":
         nbHourToLive = 80 * 365 * 24
 
         # On affiche le nombre de Tour Eiffel que l'on aurait pu construire
-        st.markdown("## Nombre de Tour Eiffel que l'on aurait pu construire : " + str(int(total / nbHourToBuildEiffelTower)*nbHourPlayedPerPlayer))
+        st.markdown("Nombre de Tour Eiffel que l'on aurait pu construire : " + str(int(total / nbHourToBuildEiffelTower)*nbHourPlayedPerPlayer))
         # On affiche le nombre de maison que l'on aurait pu construire
-        st.markdown("## Nombre de maison que l'on aurait pu construire : " + str(int(total / nbHourToBuildHouse)*nbHourPlayedPerPlayer))
+        st.markdown("Nombre de maison que l'on aurait pu construire : " + str(int(total / nbHourToBuildHouse)*nbHourPlayedPerPlayer))
         # On affiche le nombre d'Airbus A320 que l'on aurait pu construire
-        st.markdown("## Nombre d'Airbus A320 que l'on aurait pu construire : " + str(int(total / nbHourToBuildAirbusA320)*nbHourPlayedPerPlayer))
+        st.markdown("Nombre d'Airbus A320 que l'on aurait pu construire : " + str(int(total / nbHourToBuildAirbusA320)*nbHourPlayedPerPlayer))
         # On affiche le nombre de Grande Pyramide de Gizeh que l'on aurait pu construire
-        st.markdown("## Nombre de Grande Pyramide de Gizeh que l'on aurait pu construire : " + str(int(total / nbHourToBuildGreatPyramidOfGiza)*nbHourPlayedPerPlayer))
+        st.markdown("Nombre de Grande Pyramide de Gizeh que l'on aurait pu construire : " + str(int(total / nbHourToBuildGreatPyramidOfGiza)*nbHourPlayedPerPlayer))
         # On affiche le nombre de vie que l'on aurait pu vivre
-        st.markdown("## Nombre de vie que l'on aurait pu vivre : " + str(int(total / nbHourToLive)*nbHourPlayedPerPlayer))
+        st.markdown("Nombre de vie que l'on aurait pu vivre : " + str(int(total / nbHourToLive)*nbHourPlayedPerPlayer))
