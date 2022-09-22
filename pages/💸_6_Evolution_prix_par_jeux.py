@@ -1,14 +1,10 @@
-import numpy as np
 import pandas as pd
-import altair as alt
 import streamlit as st
-from PIL import Image
 
 st.set_page_config(
     page_title="Evolution du prix par jeux",
     page_icon="💸",
 )
-
 
 st.markdown("# Evolution du prix des jeux au cours du temps")
 
@@ -26,7 +22,6 @@ option = st.selectbox("Quelle jeu voulez vous voir ?", df["name"])
 appName = option
 appId = df[df["name"] == appName]["appid"].values[0]
 
-
 if appId != "" and appName != "":
     if st.button("Afficher les graphiques"):
         gameName = df["name"]
@@ -43,10 +38,7 @@ if appId != "" and appName != "":
         dfPrixMaximum = df.sort_values('initialPrice', ascending=False).drop_duplicates(['initialPrice']).head(1)
 
         st.write('Le prix maximum de '+ appName +' est de ' + str(dfPrixMaximum['initialPrice'].values[0]) + '€')
-
-
-
-        
+       
         df['date'] = pd.to_datetime(df['date'])
 
         # st.dataframe(df)
