@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import requests
 
+st.set_page_config(
+    page_title="Evolution des heures de jeux au cours du temps",
+    page_icon="📈",
+)
+
 st.markdown("# Evolution des heures de jeux au cours du temps")
 
 # Chargement des données
