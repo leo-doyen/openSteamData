@@ -18,11 +18,17 @@ st.write("#### Notre projet est disponible sur [GitHub] https://github.com/leo-d
 st.write("#### Notre equipe est composée de: Clément, Léo, Nolan et Guillaume.")
 
 st.write("## 📄 Nos pages")
+
+
+
 st.write("### [📅 Date de sortie](5_Date_sortie)")
 st.info("##### Cette page permet de voir le nombre de jeux qui ont été sortis par mois et par année.")
 
 st.write("### [📈 Evolution heure par jeux](3_Evolution_heure_par_jeux)")
 st.info("##### Cette page permet de voir l'évolution du nombre d'heure par jeux.")
+
+st.write("### [💸 Evolution prix par jeux](6_Evolution_prix_par_jeux)")
+st.info("##### Cette page permet de voir le prix de jeux qui ont été sortis par mois et par année ainsi que leur prix remisé.")
 
 st.write("### [🥇 Statistiques par joueurs](4_Statistique_par_joueur)")
 st.info("##### Cette page permet de voir les statistiques par joueurs.")
