@@ -24,6 +24,9 @@ st.info("##### Cette page permet de voir le nombre de jeux qui ont été sortis 
 st.write("### [📈 Evolution heure par jeux](3_Evolution_heure_par_jeux)")
 st.info("##### Cette page permet de voir l'évolution du nombre d'heure par jeux.")
 
+st.write("### [💸 Evolution prix par jeux](6_Evolution_prix_par_jeux)")
+st.info("##### Cette page permet de voir le prix de jeux qui ont été sortis par mois et par année ainsi que leur prix remisé.")
+
 st.write("### [🥇 Statistiques par joueurs](4_Statistique_par_joueur)")
 st.info("##### Cette page permet de voir les statistiques par joueurs.")
 
