@@ -18,9 +18,6 @@ st.write("#### Notre projet est disponible sur [GitHub] https://github.com/leo-d
 st.write("#### Notre equipe est composée de: Clément, Léo, Nolan et Guillaume.")
 
 st.write("## 📄 Nos pages")
-
-
-
 st.write("### [📅 Date de sortie](5_Date_sortie)")
 st.info("##### Cette page permet de voir le nombre de jeux qui ont été sortis par mois et par année.")
 
