@@ -15,6 +15,10 @@ st.write("Jeux sélectionné : ", option)
 appName = option
 appId = df[df["name"] == appName]["appid"].values[0]
 
+# On considère que le joueur a joué 1h par jour
+nbHourPlayedPerPlayer = 1
+nbHourPlayedPerPlayer = st.slider("Nombre d'heure joué par joueur : ", 1, 24, 1)
+
 if appId != "" and appName != "":
     if st.button("Afficher les graphiques"):
         st.markdown("## Graphique des heures de jeux : " + appName)
@@ -30,7 +34,7 @@ if appId != "" and appName != "":
         # On regroupe les heures par jours pour avoir un dataframe plus petit
         df = df.groupby("Time").sum().reset_index()
         # On affiche le dataframe en tableau
-        st.dataframe(df)
+        # st.dataframe(df)
         # On affiche le dataframe en courbe
         st.line_chart(df, x='Time', y=['Playercount'])
         # On calcule la totalité des heures de jeux
@@ -48,12 +52,12 @@ if appId != "" and appName != "":
         nbHourToLive = 80 * 365 * 24
 
         # On affiche le nombre de Tour Eiffel que l'on aurait pu construire
-        st.markdown("## Nombre de Tour Eiffel que l'on aurait pu construire : " + str(int(total / nbHourToBuildEiffelTower)))
+        st.markdown("## Nombre de Tour Eiffel que l'on aurait pu construire : " + str(int(total / nbHourToBuildEiffelTower)*nbHourPlayedPerPlayer))
         # On affiche le nombre de maison que l'on aurait pu construire
-        st.markdown("## Nombre de maison que l'on aurait pu construire : " + str(int(total / nbHourToBuildHouse)))
+        st.markdown("## Nombre de maison que l'on aurait pu construire : " + str(int(total / nbHourToBuildHouse)*nbHourPlayedPerPlayer))
         # On affiche le nombre d'Airbus A320 que l'on aurait pu construire
-        st.markdown("## Nombre d'Airbus A320 que l'on aurait pu construire : " + str(int(total / nbHourToBuildAirbusA320)))
+        st.markdown("## Nombre d'Airbus A320 que l'on aurait pu construire : " + str(int(total / nbHourToBuildAirbusA320)*nbHourPlayedPerPlayer))
         # On affiche le nombre de Grande Pyramide de Gizeh que l'on aurait pu construire
-        st.markdown("## Nombre de Grande Pyramide de Gizeh que l'on aurait pu construire : " + str(int(total / nbHourToBuildGreatPyramidOfGiza)))
+        st.markdown("## Nombre de Grande Pyramide de Gizeh que l'on aurait pu construire : " + str(int(total / nbHourToBuildGreatPyramidOfGiza)*nbHourPlayedPerPlayer))
         # On affiche le nombre de vie que l'on aurait pu vivre
-        st.markdown("## Nombre de vie que l'on aurait pu vivre : " + str(int(total / nbHourToLive)))
+        st.markdown("## Nombre de vie que l'on aurait pu vivre : " + str(int(total / nbHourToLive)*nbHourPlayedPerPlayer))
