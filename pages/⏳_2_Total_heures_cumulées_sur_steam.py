@@ -1,11 +1,8 @@
 import streamlit as st
-import math
 import matplotlib.pyplot as plt
-import os
 import pandas as pd
 import locale
 locale.setlocale(locale.LC_ALL, '')
-
 
 st.markdown("# Répartition du nombre d'heures de jeu cumulées sur tous les jeux steam")
 
@@ -76,9 +73,9 @@ for i in range(0,3):
     with col:
        
         st.markdown('**'+final2.iloc[i]['name']+'**')
-        # imageLocation = "https://cdn.akamai.steamstatic.com/steam/apps/" + format(final2.iloc[i]['idx']) + "/header.jpg"
-        # st.markdown("![](" + imageLocation + ")")
-        # st.write(final2.iloc[i]['name'])
+        imageLocation = "https://cdn.akamai.steamstatic.com/steam/apps/" + format(final2.iloc[i]['idx']) + "/header.jpg"
+        st.image(imageLocation)
+        st.write(final2.iloc[i]['name'], width=200)
         '{:,}'.format(1234567890.001).replace(',', ' ')
         st.markdown('**Heures** :')
         st.markdown('{:,}'.format(final2.iloc[i].hours).replace(',', ','))
