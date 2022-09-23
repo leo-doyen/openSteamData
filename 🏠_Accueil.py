@@ -7,7 +7,8 @@ st.set_page_config(
 
 st.markdown("![](https://indigobuzz.fr/wp-content/uploads/2018/11/steam-logo.jpg)")
 st.markdown("# Accueil")
-st.warning("Cette application est en cours de développement. Certaines pages peuvent ne pas fonctionner correctement.")
+st.success("Cette application est en efin en production proche de chez vous.")
+st.warning('Certaines pages peuvent ne pas fonctionner correctement si vous rencontrer un problème contacter Guillaume au 07 61 77 77 84.')
 
 st.write("## Open Data Steam")
 st.write("#### Ce projet a pour but de récupérer des données sur Steam et de les analyser.")
@@ -32,3 +33,5 @@ st.info("##### Cette page permet de voir les statistiques par joueurs.")
 
 st.write("### [🔟 Top 10](1_Top_10)")
 st.info("##### Cette page permet de voir les 10 jeux les plus chers et les moins chers.")
+
+st.write("#### et bien d'autres...")
