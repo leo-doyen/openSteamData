@@ -20,4 +20,4 @@ for file in listeFichiers:
     df = pd.concat([df, df2], ignore_index=True)
 
 print(df)
-df.to_csv('out.csv', index=False)
+df.to_csv('data/min_price_per_game.csv', index=False)
