@@ -3,6 +3,9 @@ import math
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
+import locale
+locale.setlocale(locale.LC_ALL, '')
+
 
 st.markdown("# Répartition du nombre d'heures de jeu cumulées sur tous les jeux steam")
 
@@ -60,4 +63,27 @@ ax1.pie(hour_graph['hours'], labels=hour_graph['name'], autopct='%1.1f%%', start
 ax1.axis('equal') 
 
 st.pyplot(fig1)
+final2 = final2[['name','tags','hours', 'idx']]
+st.markdown("## Nombre d'heures des 3️⃣ jeux les plus joués ⏰: ")
+
+# st.write(final2[['hours','name']].iloc[:3])
+col0, col1, col2 = st.columns(3, gap="Large")
+colonne = pd.DataFrame([[col0, col1, col2]], columns=["col0", "col1", "col2"])
+
+for i in range(0,3):
+
+    col = colonne['col'+str(i)][0]
+    with col:
+       
+        st.markdown('**'+final2.iloc[i]['name']+'**')
+        # imageLocation = "https://cdn.akamai.steamstatic.com/steam/apps/" + format(final2.iloc[i]['idx']) + "/header.jpg"
+        # st.markdown("![](" + imageLocation + ")")
+        # st.write(final2.iloc[i]['name'])
+        '{:,}'.format(1234567890.001).replace(',', ' ')
+        st.markdown('**Heures** :')
+        st.markdown('{:,}'.format(final2.iloc[i].hours).replace(',', ','))
+        st.markdown("**Tags** :")
+        st.markdown(final2.iloc[i].tags)
+
+
 
