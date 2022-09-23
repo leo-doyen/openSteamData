@@ -8,7 +8,7 @@ st.set_page_config(
 st.markdown("![](https://indigobuzz.fr/wp-content/uploads/2018/11/steam-logo.jpg)")
 st.markdown("# Accueil")
 st.success("Cette application est en enfin en production proche de chez vous.")
-st.warning('Certaines pages peuvent ne pas fonctionner correctement si vous rencontrer un problème contacter Guillaume au 07 61 77 77 84.')
+
 
 st.write("## Open Data Steam")
 st.write("#### Ce projet a pour but de récupérer des données sur Steam et de les analyser.")
