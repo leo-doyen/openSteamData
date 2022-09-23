@@ -21,7 +21,7 @@ def traiter_dataframe_aberant(df):
     # Si le prix maximum est supérieur à 3 fois le prix minimum 
     # Et que le pourcentage du prix maximum est inférieur à 10% 
     # On le considère comme abérant
-    if( (dfPrixMaximum > 3*dfPrixMinimum) and (dfPrixMaximumPercentage<10) ):
+    if( (dfPrixMaximum > 2*dfPrixMinimum) and (dfPrixMaximumPercentage<10) ):
         # On filtre donc tous les prix pour ne plus les avoir dans le dataframe
         df = df[df['Initialprice'] != dfPrixMaximum]
 
