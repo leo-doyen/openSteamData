@@ -19,8 +19,6 @@ dfName = pd.read_csv('data/applicationInformation.csv', sep=',', encoding='Latin
 # colonne price to Initialprice
 dfMin = dfMin.rename(columns={'price': 'Initialprice'})
 dfMax = dfMax.rename(columns={'price': 'Initialprice'})
-dfMin = traiter_dataframe_aberant(dfMin)
-dfMax = traiter_dataframe_aberant(dfMax)
 
 # jointure des deux csv
 dfMax = dfMax.merge(dfName, on='appid')

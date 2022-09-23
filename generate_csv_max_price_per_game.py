@@ -2,6 +2,8 @@ import pandas as pd
 from os import listdir
 from os.path import isfile, join
 
+from functions.traiter_dataframe_aberant import traiter_dataframe_aberant
+
 df = pd.DataFrame([], columns=['appid', 'price'])
 
 listeFichiers = ["data/PriceHistory/" + f for f in listdir("data/PriceHistory") if isfile(join("data/PriceHistory", f))]
@@ -9,6 +11,7 @@ listeFichiers = ["data/PriceHistory/" + f for f in listdir("data/PriceHistory") 
 for file in listeFichiers:
     print(file)
     fileDataframe = pd.read_csv(file, sep=",", header="infer", encoding="Latin-1")
+    fileDataframe = traiter_dataframe_aberant(fileDataframe)
     price = fileDataframe['Initialprice'].max()
 
     appid = file.split("/")[2].split(".")[0]

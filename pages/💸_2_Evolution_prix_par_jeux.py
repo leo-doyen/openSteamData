@@ -27,7 +27,7 @@ appId = df[df["name"] == appName]["appid"].values[0]
 if appId != "" and appName != "":
     if st.button("Afficher les graphiques"):
         gameName = df["name"]
-        st.markdown("## Graphique des heures de jeux : " + appName)
+        st.markdown("## Graphique des prix du jeux : " + appName)
         imageLocation = "https://cdn.akamai.steamstatic.com/steam/apps/" + appId + "/header.jpg"
         st.markdown("![](" + imageLocation + ")")
         # On récupère le fichier des heures de jeux du jeu sélectionné
