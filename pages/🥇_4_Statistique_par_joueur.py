@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 import requests
+from functions.parse_number_by_group_of_three import parse_number
+
+from functions.truncate_number import truncate
 
 st.set_page_config(
     page_title="Statistique par joueur",
@@ -28,6 +31,6 @@ if(userId != ""):
 
         # Nombre d'heure de jeux total
         total = listOfPlayeddGame["playtime_forever"].sum()
-        st.markdown("## Total des heures de jeux : " + str(total))
-        st.markdown("## Total des jours de jeux : " + str(total/24))
-        st.markdown("## Total des années de jeux : " + str(total/24/365))
+        st.markdown("Total des heures de jeux : " + str(parse_number(truncate(total))))
+        st.markdown("Total des jours de jeux : " + str(parse_number(truncate(total/24))))
+        st.markdown("Total des années de jeux : " + str(parse_number(truncate(total/24/365))))
