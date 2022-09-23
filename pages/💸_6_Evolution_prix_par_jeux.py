@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 
+from functions.traiter_dataframe_aberant import traiter_dataframe_aberant
+
 st.set_page_config(
     page_title="Evolution du prix par jeux",
     page_icon="💸",
@@ -32,6 +34,8 @@ if appId != "" and appName != "":
         fichierLocation = "data/PriceHistory/" + appId + ".csv"
         df = pd.read_csv(fichierLocation, sep=",", header="infer", encoding="Latin-1")
         
+        df = traiter_dataframe_aberant(df)
+
         df.columns = ['date','initialPrice','finalPrice','discount']
 
         # On récupere un dataframe avec le prix maximum du jeu
