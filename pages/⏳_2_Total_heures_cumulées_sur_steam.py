@@ -4,6 +4,11 @@ import pandas as pd
 import locale
 locale.setlocale(locale.LC_ALL, '')
 
+st.set_page_config(
+    page_title="Total heures cumulées sur steam",
+    page_icon="⏳",
+)
+
 st.markdown("# Répartition du nombre d'heures de jeu cumulées sur tous les jeux steam")
 
 tags=pd.read_csv(r'data/applicationTags.csv', sep=',',header=None, encoding='Latin-1')
